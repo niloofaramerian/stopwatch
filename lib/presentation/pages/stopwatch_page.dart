@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/elapsed_controller.dart';
-import '../widgets/elapsed_time_text.dart';
+import '../widgets/stopwatch_renderer.dart';
 
 class StopwatchPage extends StatefulWidget {
   const StopwatchPage({Key? key}) : super(key: key);
@@ -36,10 +36,10 @@ class _StopwatchPageState extends State<StopwatchPage>
       child: Scaffold(
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(24.0),
+            padding: EdgeInsets.all(32.0),
             child: AspectRatio(
               aspectRatio: 1.0,
-              child: ElapsedTimeText(),
+              child: StopwatchRenderer(),
             ),
           ),
         ),
