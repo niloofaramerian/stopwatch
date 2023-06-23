@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stopwatch/utils/extensions/duration.dart';
 
 import '../controllers/elapsed_controller.dart';
@@ -43,7 +44,7 @@ class _TimeDigit extends StatelessWidget {
       width: width,
       child: Text(
         text,
-        style: const TextStyle(fontSize: 20),
+        style: GoogleFonts.chakraPetch(fontSize: 20),
         textAlign: TextAlign.center,
       ),
     );

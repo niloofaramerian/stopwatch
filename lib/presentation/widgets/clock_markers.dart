@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ClockMarkers extends StatelessWidget {
   const ClockMarkers({
@@ -15,7 +16,7 @@ class ClockMarkers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = seconds % 5 == 0 ? Colors.white : Colors.grey.shade700;
-    const width = 2.0;
+    const width = 2.5;
     const height = 12.0;
     return Transform(
       alignment: Alignment.center,
@@ -26,7 +27,10 @@ class ClockMarkers extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        color: color,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+        ),
       ),
     );
   }
@@ -59,7 +63,10 @@ class ClockTextMarker extends StatelessWidget {
         height: height,
         child: Text(
           '$value',
-          style: const TextStyle(fontSize: 20),
+          style: GoogleFonts.chakraPetch(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
           textAlign: TextAlign.center,
         ),
       ),
