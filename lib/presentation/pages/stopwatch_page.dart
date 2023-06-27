@@ -72,10 +72,10 @@ class _StopwatchPageState extends State<StopwatchPage>
     } else {
       _ticker.stop();
       _controller
-        ..setCurrentlyElapsed(Duration.zero)
         ..setPreviouslyElapsed(
           _controller.previouslyElapsed + _controller.currentlyElapsed,
-        );
+        )
+        ..setCurrentlyElapsed(Duration.zero);
       ;
     }
   }
