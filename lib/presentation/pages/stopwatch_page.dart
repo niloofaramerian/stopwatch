@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/elapsed_controller.dart';
+import '../widgets/reset_button.dart';
+import '../widgets/start_stop_button.dart';
 import '../widgets/stopwatch_renderer.dart';
 
 class StopwatchPage extends StatefulWidget {
@@ -22,28 +24,67 @@ class _StopwatchPageState extends State<StopwatchPage>
   @override
   void initState() {
     _ticker = createTicker((elapsed) {
-      _controller.setElapsed(elapsed);
+      _controller.setCurrentlyElapsed(elapsed);
     });
-    _ticker.start();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const AnnotatedRegion<SystemUiOverlayStyle>(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
       // Customize the system UI overlay like the status bar appearance
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(32.0),
-            child: AspectRatio(
-              aspectRatio: 1.0,
-              child: StopwatchRenderer(),
+            padding: const EdgeInsets.all(32.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    StopwatchRenderer(radius: constraints.maxWidth / 2),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        ResetButton(onPressed: _reset),
+                        const Spacer(),
+                        StartStopButton(onPressed: _toggleRunning),
+                      ],
+                    )
+                  ],
+                );
+              },
             ),
           ),
         ),
       ),
     );
+  }
+
+  void _toggleRunning() {
+    _controller.reverseRunning();
+
+    if (_controller.isRunning) {
+      _ticker.start();
+    } else {
+      _ticker.stop();
+      _controller
+        ..setCurrentlyElapsed(Duration.zero)
+        ..setPreviouslyElapsed(
+          _controller.previouslyElapsed + _controller.currentlyElapsed,
+        );
+      ;
+    }
+  }
+
+  void _reset() {
+    _ticker.stop();
+
+    _controller
+      ..resetElapsed()
+      ..setRunning(false);
   }
 }
