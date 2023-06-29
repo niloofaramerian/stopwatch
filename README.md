@@ -1,16 +1,13 @@
-# stopwatch
+# Animated Stopwatch
 
-Animated stopwatch
+This project is a stopwatch application built using Flutter and powered by the [getX](https://pub.dev/packages/get) package for state management. 
+The stopwatch includes **animation** to enhance the user experience and make it more visually appealing.
 
-## Getting Started
+![MacBook Pro 14_ - 9](https://github.com/niloofaramerian/stopwatch_example/assets/69586214/2e80f0d9-0de4-4816-8827-1d986d6c7f95)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 💫 Features
+- Use Ticker for animations and time-based operations
+- Start, stop, and reset functionality for the stopwatch.
+- Accurate time tracking with high precision.
+- Apply animated transitions and rotations with Transform for an interactive UI.
