@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:stopwatch/app/config/app_colors.dart';
+
+import '../../app/config/app_text_styles.dart';
 
 class ClockMarkers extends StatelessWidget {
   const ClockMarkers({
@@ -15,7 +17,7 @@ class ClockMarkers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = seconds % 5 == 0 ? Colors.white : Colors.grey.shade700;
+    final color = seconds % 5 == 0 ? AppColors.onPrimary : Colors.grey.shade700;
     const width = 2.5;
     const height = 12.0;
     return Transform(
@@ -63,10 +65,7 @@ class ClockTextMarker extends StatelessWidget {
         height: height,
         child: Text(
           '$value',
-          style: GoogleFonts.chakraPetch(
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
+          style: AppTextStyles.bodySmall,
           textAlign: TextAlign.center,
         ),
       ),

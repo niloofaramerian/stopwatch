@@ -10,4 +10,8 @@ extension DurationExtension on Duration {
   String getHundreds() {
     return ((inMilliseconds / 10) % 100).toStringAsFixed(0).padLeft(2, '0');
   }
+
+  String toStringDuration() {
+    return '${getMinutes()}:${getSeconds()}:${getHundreds()}';
+  }
 }
